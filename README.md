@@ -1,1 +1,1 @@
-# Nine_Men_Morris_Variant
+# Nine Men Morris Variant
