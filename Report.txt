@@ -1,0 +1,37 @@
+1. board1.txt: WWxxxxxWWWBBBxBxxBWBBB
+2. board2.txt: WWxxxxxWWWWBBBBxxBWBxB
+
+a. MiniMax vs Alpha-beta pruning
+
+	Output:
+		For input board1.txt depth=2:
+			* MiniMaxOpening.py gets MINIMAX = -2  positions evaluated: 98
+			* ABOpening.py gets MINIMAX = -2  positions evaluated: 14
+			* MiniMaxGame.py gets MINIMAX = -2018 evaluated: 69
+			* ABGame.py gets MINIMAX = -2018 evaluated: 31
+
+		For input board2.txt depth=2:
+			* MiniMaxOpening.py gets MINIMAX = 0, positions evaluated: 444
+			* ABOpening.py gets MINIMAX = 0, positions evaluated: 80
+			* MiniMaxGame.py gets MINIMAX = 981, positionsevaluated: 410
+			* ABGame.py gets MINIMAX = 981, positions evaluated: 355
+
+
+b. Imporved estimate function:
+
+		I take both position and close mills into consideration. Positions have points range from 1 to 3, depending on how many possible lines(mills) it can be part of.
+		Aside from positions, every close mill have additional 10 points.
+		So eventually, my improved estimate function takes position, number of pieces and close mills into calutation for the next step.
+		The depth has to be greater to get different results.
+
+	- board1.txt, depth=4
+		* MiniMaxOpening.py gets WWWxxxxWWWBBBxBxxBWBBB
+		* MiniMaxOpeningImproved.py gets WWWxxxxWWWBBBxBxxBWBBB
+		* MiniMaxGame.py gets WWxWxxxWxWBBBxBxxBWBBB
+		* MiniMaxGameImproved.py gets WWxWxxxWxWBBBxBxxBWBBB
+
+	- board2.txt, depth=5
+		* MiniMaxOpening.py gets WWWxxxxWWWWBBxBxxBWBxB
+		* MiniMaxOpeningImproved.py gets WWxxxxxWWWWBBBBWxBWBxx
+		* MiniMaxGame.py gets WWxxxxxWWWWBBBBWxxxBxB
+		* MiniMaxGameImproved.py gets WWxxxxWWWxWBBBBxxBWBxB
